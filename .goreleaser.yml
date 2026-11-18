@@ -2,9 +2,7 @@ version: 2
 env:
   - GO111MODULE=on
   - CGO_ENABLED=0
-before:
-  hooks:
-    - go mod download
+  - GOFLAGS=-mod=vendor
 builds:
   - id: jx-build-controller
     # Path to main.go file or main package.

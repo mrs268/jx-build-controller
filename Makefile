@@ -8,6 +8,7 @@ BUILD_TARGET = build
 MAIN_SRC_FILE=cmd/main.go
 GO := GO111MODULE=on go
 GO_NOMOD :=GO111MODULE=off go
+export GOFLAGS := $(GOFLAGS) -mod=vendor
 REV := $(shell git rev-parse --short HEAD 2> /dev/null || echo 'unknown')
 ORG := jenkins-x
 ORG_REPO := $(ORG)/$(NAME)
