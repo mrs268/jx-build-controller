@@ -38,6 +38,8 @@ changelog.md
 #OSX system files.
 **/.DS_Store
 
+vendor/**
+
 # if you run `jx install --gitops` locally
 jenkins-x-dev-environment
 
@@ -63,5 +65,3 @@ pkg/jx/cmd/verify-pod.log
 
 plugin.gz.history
 .history
-
-!vendor/**
