@@ -16,7 +16,28 @@ The build controller is included OOTB inside [Jenkins X](https://jenkins-x.io/do
 
 Download the [jx-build-controller binary](https://github.com/jenkins-x-plugins/jx-build-controller/releases) for your operating system and add it to your `$PATH`.
 
+## v0.5.24 nil-Stage backport
+
+Based on upstream v0.5.24 (`5a3d0179ee043f4d91805b25a8859e3074fd7854`),
+this branch replaces `jx-pipeline` v0.7.21 with an immutable commit in
+[mrs268/jx-pipeline](https://github.com/mrs268/jx-pipeline), pinned in `go.mod`.
+The pin is merge commit `a9b1e83a725d64a31d1bce2fdea83e8d445e70d9`
+from [mrs268/jx-pipeline#1](https://github.com/mrs268/jx-pipeline/pull/1).
+That fork adds a nil-Stage guard for Preview/Promote activity messages and
+regression tests. All other dependency versions remain unchanged, including
+Tekton v0.41.0 and its `v1beta1` API.
+
+Build and check the resolved fork with Go 1.23.3:
+
+```sh
+go list -m github.com/jenkins-x-plugins/jx-pipeline
+CGO_ENABLED=0 go test ./pkg/cmd/controller/tekton -count=1
+make linux
+```
+
+The Dockerfile copies `build/linux/jx-build-controller`; no image is published
+by these commands.
+
 ## Commands
 
 See the [jx-build-controller command reference](https://github.com/jenkins-x-plugins/jx-build-controller/blob/master/docs/cmd/jx-build-controller.md#jx-build-controller)
-

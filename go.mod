@@ -196,3 +196,5 @@ require (
 go 1.23.0
 
 toolchain go1.23.3
+
+replace github.com/jenkins-x-plugins/jx-pipeline => github.com/mrs268/jx-pipeline v0.7.22-0.20261120174335-a9b1e83a725d
